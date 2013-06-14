@@ -1,7 +1,5 @@
-edge-inspect-api
-===================
-
-#The Edge Inspect JavaScript API#
+The Edge Inspect JavaScript API
+=================================
 
 The Edge Inspect team has created a simple JavaScript library that will allow other pieces of software to easily integrate with a limited subset of Edge Inspect features. 
 
