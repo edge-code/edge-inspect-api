@@ -1,0 +1,42 @@
+{
+  "name": "edge-inspect",
+  "description": "Grunt Task to consume Adobe's Edge Inspect JavaScript API",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Duane O'Brien",
+    "email": "duaneo@adobe.com",
+    "url": "http://html.adobe.com/edge/inspect"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt": "~0.4.1",
+    "cryptojs": "~2.5.3",
+    "node-localstorage": "~0.3.3",
+    "ws": "~0.4.25"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}

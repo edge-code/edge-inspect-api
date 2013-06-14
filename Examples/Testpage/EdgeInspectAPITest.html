@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edge Inspect Javascript API Test Page</title>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src='2.5.3-crypto-sha1-hmac-pbkdf2-blockmodes-aes.js'></script>
+        <script src='edge-inspect-api-1.0.0.js'></script>
+        <script>
+            /*jslint browser:true */
+            /*global $, EdgeInspect, console */
+            
+            $(document).ready(function () {
+                'use strict';
+                localStorage.removeItem("log");
+                var EI = new EdgeInspect();
+                
+                function connectButtonClick() {
+                    // We are passing "Client Name", "Client ID", and "Encryption Key"
+                    // If you don't already have a Client ID, you can generate one before connecting by calling EI.generateUUID()
+                    // If you don't already have an encryption key, don't pass that parameter and one will be created.
+                    // The encryption key will be returned to the callback subscribed to the EI.CONNECTED_EVENT.  See onConnected below
+                    EI.connect('Edge Inspect API Test Page', '5591944b-b354-404e-b714-70652e94ef03', '2bcf6b8854e61983b87b7756754ec6a694ce667aa1a2e2181c5d6dd949823d99');
+                }
+                
+                function disconnectButtonClick() {
+                    EI.disconnect();
+                }
+                
+                function screenshotClick() {
+                    EI.takeScreenshot($("#fullPage").is(':checked'), $("#dualOrienation").is(':checked'));
+                }
+                
+                function sendURLClick() {
+                    EI.sendURL($("#urlText").val());
+                }
+                
+                function onConnected(encryptionKey) {
+                    // You can save encryptionKey here into localStorage or some other mechanism for later use.
+                    alert('Connected!');
+                }
+                
+                function onDisconnected(reason) {
+                    switch (reason) {
+                        case EI.CLOSE_REASON_CLEAN: 
+                            alert('Disconnected :( NORMAL TERMINATION');
+                            break;
+                        case EI.CLOSE_REASON_UNKNOWN:
+                            alert('ERROR! Disconnected :(');
+                            break;
+                    }
+                }
+                
+                $("#connect").on('click', connectButtonClick);
+                $("#disconnect").on('click', disconnectButtonClick);
+                $("#sendurl").on('click', sendURLClick);
+                $("#screenshot").on('click', screenshotClick);
+                
+                EI.subscribe(EI.CONNECTED_EVENT, onConnected);
+                EI.subscribe(EI.DISCONNECTED_EVENT, onDisconnected);
+            });
+            
+        </script>
+    </head>
+    <body>
+        <h1>Edge Inspect Javascript API Test Page</h1>
+        <form action=''>
+            <input type='button' value='Connect' id="connect"> <input type='button' value='Disconnect' id='disconnect'><br/>
+            <br/>
+            URL: <input type='text' id='urlText' value='http://html.adobe.com/edge/inspect' size='120'><br/>
+            <input type='button' value='Send URL' id="sendurl">
+            <br/>
+            <input type='button' value='Take Screenshot' id="screenshot"><input id="fullPage" type='checkbox' >Full Page Screenshot<input id="dualOrienation" type='checkbox'>Dual-orientation Screenshots<br/>
+            <br/>
+        </form>
+    </body>
+</html>
+
+
+    
