@@ -1,0 +1,16 @@
+{
+  "name": "edge-inspect-api",
+  "description": "This will install the node dependencies that are required by Adobe's Edge Inspect JavaScript API should you choose to use it in a node context.",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Duane O'Brien",
+    "email": "duaneo@adobe.com",
+    "url": "http://html.adobe.com/edge/inspect"
+  },
+  "dependencies": {
+    "cryptojs": "~2.5.3",
+    "node-localstorage": "~0.3.3",
+    "ws": "~0.4.25"
+  }
+}
