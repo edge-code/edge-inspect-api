@@ -47,3 +47,6 @@ For the purposes of this document the following terms are defined.
         - node-localstorage
         - cryptojs        
     + Browser - include the third-party Crypto-JS v2.5.3 library
+
+###NOTICE###
+The API/code available on this site is governed by the Apache 2.0 license. However, in order to use this API, you or your end users are required to have a valid license to Adobe Edge Inspect software. Use of Adobe Edge Inspect or any other software is governed under separate terms and licenses provided with such software. Nothing in this project grant rights to any other software or service.  
